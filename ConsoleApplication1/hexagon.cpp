@@ -2,7 +2,7 @@
 #include <fstream>
 
 HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-void Scan_Map(char* map[], ifstream& file) {
+void Scan_Map(char* map[],ifstream& file) {
 	int i, j;
 	for (i = 0; i < map_height; i++)
 		map[i] = new char[map_height];
@@ -35,8 +35,8 @@ void Play(int mode, char* map[]) {
 		if (mode == 2) {
 			if (Can_Play(map, player1)) {
 				Move_Human(map);
-				getchar();
-				getchar();
+				//getchar();
+				//getchar();
 			}
 			else
 				break;

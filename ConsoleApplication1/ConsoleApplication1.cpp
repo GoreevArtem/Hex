@@ -9,12 +9,29 @@
 using namespace std;
 
 
-int main() {
+int main(int argc, char* argv[]) {
+
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+
+	if (argc < 2)
+	{
+		cout << "Wrong format" << endl;
+		return -1;
+	}
+
+	ifstream input_file(argv[1]);
+
+	if (!input_file) {
+		cout << "Error writing file" << endl;
+		return -3;
+	}
+
 	//FILE* input_file = fopen("map.txt", "r");
 
-	ifstream input_file;
+	//ifstream input_file;
 
-	input_file.open("map.txt");
+	//input_file.open("map.txt");
 
 	char* map[map_height];
 	int mode;
