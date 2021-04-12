@@ -68,6 +68,7 @@ void Play(int mode, char* map[]) {
 			cout << "Computer(2) is WIN!" << endl;
 	}
 }
+
 void Print_Map(char* map[]) {
 	cout << "      0  1  2  3  4  5  6  7  8 " << endl;
 	for (int i = 0; i < map_height; i++) {
@@ -282,16 +283,27 @@ int Move_Computer(char* map[], int level, int depth, int player,
 							if (level % 2 == 0) {
 								value[counter_move] = Move_Computer(map, level + 1, depth, (player * 2) % 3,
 									current_player, alpha, beta);
-								optimal = min(optimal, value[counter_move]);
+								//optimal = min(optimal, value[counter_move]);
+
+								optimal = ((optimal < value[counter_move]) ? optimal : value[counter_move]);
+
 								value[counter_move] = optimal;
-								beta = min(beta, optimal);
+								//beta = min(beta, optimal);
+
+								beta = ((beta < optimal) ? beta : optimal);
 							}
 							else {
 								value[counter_move] = Move_Computer(map, level + 1, depth, (player * 2) % 3,
 									current_player, alpha, beta);
-								optimal = max(optimal, value[counter_move]);
+								//optimal = max(optimal, value[counter_move]);
+
+								optimal = ((optimal > value[counter_move]) ? optimal : value[counter_move]);
+
 								value[counter_move] = optimal;
-								alpha = max(alpha, optimal);
+								//alpha = max(alpha, optimal);
+
+								alpha = ((alpha > optimal) ? alpha : optimal);
+
 							}
 							for (int t1 = 0; t1 < map_height; t1++)
 								for (int t2 = 0; t2 < map_width; t2++)
